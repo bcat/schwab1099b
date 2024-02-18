@@ -16,7 +16,6 @@ const eltIds = {
   'continue' : 'stk-transaction-summary-entry-views-0-actions-1-action_Next',
   'more_boxes' : 'stk-transaction-summary-entry-views-0-fields-11-multiSelect-choices-0',
   'wash' : 'stk-transaction-summary-entry-views-0-fields-12-collection-values-0-fieldCollection-values-1-input-WashSaleLossDisallowedAmtPP',
-  'continue2' : 'stk-uncommon-views-0-actions-1-action_Next',
   'add_another' : 'stk-transaction-gateway-views-5-primaryInfo-0-table-SecurityDetailPP-actions-0-action_AddItem',
   'type' : 'stk-transaction-summary-entry-views-0-fields-0-staticSwitch-1-choice-InvestmentType',
 }
@@ -128,9 +127,7 @@ function enterOneRow(data, haveMore) {
       .then(shortPause)
       .then(data["wash"] ? clickAndEnter.bind(null, eltIds['wash'], data["wash"]) : shortPause())
       .then(shortPause)
-      .then(click.bind(null, eltIds['continue']))
-      .then(longPause)
-      .then(click.bind(null, eltIds['continue2']));
+      .then(click.bind(null, eltIds['continue']));
     
   if (haveMore) {
       return promise
