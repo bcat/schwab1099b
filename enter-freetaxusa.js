@@ -4,17 +4,17 @@
  * See README.md for instructions.
  */
 
-
 const eltSelectors = {
-  'owner': '#ts_flag-T',  // NOTE: confirm ID before using
-  'single-stock': '#sale_type-I',
+  'owner': '#ts_flag-help-1',  // NOTE: confirm ID before using
+  'single-stock': 'label[for="sale_type-I"]',
   'desc' : '#temp_inv_desc',
   'acq' : '#acq_date',
   'sale' : '#sold_date',
   'proceeds' : '#sale_price',
   'basis' : '#temp_basis',
-  'not-reported': '#basis_shown-B', // TODO: deal with different types
-  'continue' : '.btn.btn-primary.mx-1.button1',
+  'not-reported': 'label[for="temp_basis_shown-B"]', // TODO: deal with different types
+  'continue' : '.btn.btn-primary.m-1.button1',
+  'stocks' : 'label[for="asset_type-S"]',
 }
 
 function waitFor(millisecs) {
@@ -94,7 +94,13 @@ function enterOneRow(data, haveMore) {
   return shortPause()
     .then(() => waitAndClick(eltSelectors['continue']))
     .then(shortPause)
+    .then(() => waitAndClick(eltSelectors['stocks']))
+    .then(shortPause)
+    .then(() => waitAndClick(eltSelectors['continue']))
+    .then(shortPause)
     .then(() => waitAndClick(eltSelectors['owner']))
+    .then(shortPause)
+    .then(() => waitAndClick(eltSelectors['continue']))
     .then(shortPause)
     .then(() => waitAndClick(eltSelectors['single-stock']))
     .then(shortPause)
